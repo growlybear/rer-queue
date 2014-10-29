@@ -2,6 +2,15 @@ var url = require('url');
 var needle = require('needle');
 var cheerio = require('cheerio');
 
+// Pre-installed Iron.io helper module for accessing config and payload variables
+var worker = require('node_helper');
+
+// Just checking
+console.log("params:", worker.params);
+console.log("config:", worker.config);
+console.log("task_id:", worker.task_id);
+
+
 // Fetch the Vic Supreme Court page with the daily Civil Court list link
 var page = url.format({
     protocol: 'http',
@@ -10,10 +19,12 @@ var page = url.format({
 });
 
 var selector = '#publication a';
-var link, $;
+
 
 // NOTE don't forget to explicity exit on completion
 needle.get(page, function (error, response) {
+
+    var link, $;
 
     // Something bad happened :-(
     if (error) {
