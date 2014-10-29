@@ -9,6 +9,7 @@
   "author": "Michael Allan <michaelallan@optushome.com.au>",
   "private": true,
   "dependencies": {
+    "cheerio": "^0.17.0",
     "needle": "^0.7.10"
   }
 }
