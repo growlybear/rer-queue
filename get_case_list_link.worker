@@ -22,4 +22,4 @@ build "npm config set strict-ssl false; npm install --production"
 # include the following in mean.worker
 # dir "app/models"
 
-exec "get_civil_cases_page_worker.js"
+exec "get_case_list_link_worker.js"
