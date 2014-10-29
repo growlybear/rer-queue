@@ -27,7 +27,7 @@ if (worker.params) {
         selector = worker.params.selector;
     }
 
-    // If neither url nor selector are specified, you're doing it wrong ;-)
+    // Warn if neither url nor selector are specified
     if (!worker.params.url && !worker.params.selector) {
         console.error(
             'Invalid params. Object must specify url and/or selector: ' +
