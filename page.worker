@@ -1,18 +1,20 @@
-# define the runtime
+# declare runtime for the executable
 runtime "node"
 
-# pass the script name to the runtime
-exec "page_worker.js"
+# if not defined default node version will be version 0.8
+stack "node-0.10"
 
-# node modules need to be included in the upload
-# ... although this takes a loooooooooooooooooong time
-dir "node_modules"
-
-# include dependency manifest when uploading
+# include package.json to reference during remote build
 file "package.json"
 
-# build your dependencies remotely from package.json
-# build "npm install" # run npm install
+# we need to remotely build because mongoose has a c++ bson
+# dependency that must be built for our Ubuntu Ubuntu 12.10 environment
 
-# you can use "full_remote_build true" or shorthand "remote"
-# remote
+remote
+build "npm config set strict-ssl false; npm install --production"
+
+# load in your model you can include this as a seperate folder in the .worker file
+# include the following in in mean.worker
+# dir "app/models"
+
+exec "page_worker.js"
