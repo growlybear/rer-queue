@@ -1,3 +1,6 @@
+# Example worker from
+# https://github.com/iron-io/iron_worker_examples/blob/master/node/connecting_to_mongo_mongoose/mean.worker
+
 # declare runtime for the executable
 runtime "node"
 
@@ -11,10 +14,12 @@ file "package.json"
 # dependency that must be built for our Ubuntu Ubuntu 12.10 environment
 
 remote
+
+# NOTE this works around a known error: SSL Error: SELF_SIGNED_CERT_IN_CHAIN
 build "npm config set strict-ssl false; npm install --production"
 
 # load in your model you can include this as a seperate folder in the .worker file
-# include the following in in mean.worker
+# include the following in mean.worker
 # dir "app/models"
 
 exec "page_worker.js"
