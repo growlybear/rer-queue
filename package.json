@@ -1,0 +1,11 @@
+{
+  "name": "rer-queue",
+  "version": "1.0.0",
+  "description": "Work tasks for Iron.io execution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Allan <michaelallan@optushome.com.au>",
+  "private": true
+}
