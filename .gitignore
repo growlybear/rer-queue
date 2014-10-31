@@ -24,6 +24,9 @@ coverage.html
 # Iron.io config
 .iron.json
 
+# Sensitive config info (credentials)
+.credentials.json
+
 # Coverage directory used by tools like istanbul
 coverage
 
