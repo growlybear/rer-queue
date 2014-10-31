@@ -1,0 +1,25 @@
+# Example worker from
+# https://github.com/iron-io/iron_worker_examples/blob/master/node/connecting_to_mongo_mongoose/mean.worker
+
+# declare runtime for the executable
+runtime "node"
+
+# if not defined default node version will be version 0.8
+stack "node-0.10"
+
+# include package.json to reference during remote build
+file "package.json"
+
+# we need to remotely build because mongoose has a c++ bson
+# dependency that must be built for our Ubuntu Ubuntu 12.10 environment
+
+remote
+
+# NOTE this works around a known error: SSL Error: SELF_SIGNED_CERT_IN_CHAIN
+build "npm config set strict-ssl false; npm install --production"
+
+# load in your model you can include this as a seperate folder in the .worker file
+# include the following in mean.worker
+# dir "app/models"
+
+exec "get_case_list_pdf_worker.js"
